@@ -383,7 +383,7 @@ class GoogleDriveHelper:
 
     def clone(self, link):
         if ',' in link:
-            cloneFiles(link)
+            self.cloneFiles(link)
         global SERVICE_ACCOUNT_INDEX
         self.is_cloning = True
         self.start_time = time.time()
@@ -482,7 +482,7 @@ class GoogleDriveHelper:
             return msg, ""
         return msg, InlineKeyboardMarkup(buttons.build_menu(2))
     
-    def cloneFiles(link):
+    def cloneFiles(self, link):
         if ',' in link:
             links = link.split(',')
             for x in links:
