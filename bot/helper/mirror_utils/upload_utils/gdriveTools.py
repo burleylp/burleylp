@@ -321,6 +321,7 @@ class GoogleDriveHelper:
     @retry(wait=wait_exponential(multiplier=2, min=3, max=6), stop=stop_after_attempt(5),
            retry=retry_if_exception_type(HttpError), before=before_log(LOGGER, logging.DEBUG))
     def copyFile(self, file_id, dest_id):
+        self.switchServiceAccount()
         body = {
             'parents': [dest_id]
         }
